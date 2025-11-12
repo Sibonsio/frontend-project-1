@@ -29,7 +29,7 @@ const Cards = () => {
         fetchData()
     }, [data])
     const showCards = data.map((data) => {
-        return <Card key={data._id} firstname={data.firstname} lastname={data.lastname} age={data.age} employmentStatus={data.employmentStatus} />
+        return <Card key={data._id} id={data._id} firstname={data.firstname} lastname={data.lastname} age={data.age} employmentStatus={data.employmentStatus} />
     })
     return (
         <main className='cards'>

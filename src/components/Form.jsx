@@ -73,7 +73,7 @@ const Form = () => {
     }
     const storeData = async () => {
         try {
-            const response = await instance.post('api/v1/signup', data)
+            const response = await instance.post('/signup', data)
             setResponse(response.data.message)
         } catch (error) {
             setResponse(error.response.data.message)
