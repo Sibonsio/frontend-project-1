@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .label {
@@ -30,4 +31,31 @@
     border-radius: 50px;
     color: white;
     cursor: pointer;
+}
+
+.message {
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.fade-out {
+    animation: fade-out ease 2s forwards;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }

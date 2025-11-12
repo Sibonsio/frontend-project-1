@@ -1,5 +1,7 @@
 import './Form.css'
 import { useEffect, useState } from 'react'
+import instance from '../config/axios.jsx'
+
 
 const Form = () => {
     const [formData, setFormData] = useState({
@@ -9,6 +11,8 @@ const Form = () => {
         employmentStatus: ''
     })
     const [data, setData] = useState({});
+    const [isResponse, setResponse] = useState('');
+    const [isMessage, setMessage] = useState(false);
     const handleChange = (e) => {
         const event = e.target
         const placeholder = event.placeholder
@@ -53,21 +57,31 @@ const Form = () => {
                 }
             })
         }
+        setMessage(false)
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        setData(formData)
+        storeData()
         setFormData({
             firstname: '',
             lastname: '',
             age: '',
             employmentStatus: ''
         })
+        setMessage(true)
 
     }
+    const storeData = async () => {
+        try {
+            const response = await instance.post('api/v1/signup', data)
+            setResponse(response.data.message)
+        } catch (error) {
+            setResponse(error.response.data.message)
+        }
+    }
     useEffect(() => {
-        console.log(data)
-    }, [data])
+        setData(formData)
+    }, [formData])
     return (
         <div className='form'>
             <form className='form-container' onSubmit={handleSubmit}>
@@ -80,6 +94,7 @@ const Form = () => {
                 <label className='label'>Employment Status</label>
                 <input className='input' onChange={handleChange} value={formData.employmentStatus} type="text" placeholder="Employment Status" />
                 <input className='submit' type="submit" placeholder="Submit" />
+                {isMessage && <h1 className={`message ${isMessage && 'fade-out'} ${isResponse === 'Submission Error' ? 'red' : 'green'}`}>{isResponse}</h1>}
             </form>
         </div>
     )
