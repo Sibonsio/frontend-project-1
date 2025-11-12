@@ -1,0 +1,33 @@
+.form {
+    background-color: white;
+    height: 780px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.label {
+    font-size: 10px;
+    font-size: 200;
+}
+
+.input {
+    margin-bottom: 10px;
+}
+
+.submit {
+    width: 80px;
+    border: 1px solid grey;
+    padding: 5px;
+    background-color: gray;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+}
